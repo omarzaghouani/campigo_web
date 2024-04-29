@@ -1,0 +1,3 @@
+[submodule "campiigoweb"]
+	path = campiigoweb
+	url = https://github.com/omarzaghouani/campiigoweb.git

@@ -1,0 +1,209 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+<title>transport index</title>
+{% endblock %}
+
+
+{% block body %}
+
+<div class="table_centre-container">
+        <table class="centre-table">
+    <thead>
+        <tr>
+            <th>Num_t</th>
+            <th>Transpoteur</th>
+            <th>Vehicule</th>
+            <th>Dd</th>
+            <th>Da</th>
+            <th>Cout</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transport in transports %}
+            <tr>
+                <td>{{ transport.getNumT() }}</td>
+                <td>{{ transport.Transpoteur }}</td>
+                <td>{{ transport.Vehicule }}</td>
+                <td>{{ transport.getDd() ? transport.getDd()|date('Y-m-d') : '' }}</td>
+                <td>{{ transport.getDa() ? transport.getDa()|date('Y-m-d') : '' }}</td>
+                <td>{{ transport.getCout() }}</td>
+                
+                <td>
+                  <a href="{{ path('app_transport_show', {'num_t': transport.getNumT()}) }}" class="btn">Show Transport</a>
+  <a href="{{ path('app_transport_pdf', {'num_t': transport.getNumT()}) }}" class="btn">Generate PDF</a>
+
+ 
+                    <a href="{{ path('app_transport_edit', {'num_t': transport.getNumT()}) }}"class="btn">edit Transport </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">No records found</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+   <div class="pagination justify-content-center">
+    {{ knp_pagination_render(transports) }}
+</div>
+
+   <a href="{{ path('app_transport_new') }}" class="btn btn-large">Create new</a>
+    <a href="{{ path('services_plus_achetes') }}" class="btn btn-primary btn-sm">Stat</a>
+   </div>
+   </div>
+   </div>                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <style>
+    .action-buttons {
+        margin-bottom: 10px;
+    }
+    .action-buttons a {
+        margin-right: 10px;
+        padding: 8px 16px;
+        background-color: #325B69;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+    .action-buttons a:hover {
+        background-color: #325B69;
+    }
+</style>
+
+ 
+
+
+      
+
+
+
+
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+              <p>Copyright © Designed &amp; Developed by omar zaghouani <a href="" target="_blank">zo.livezaghouani</a> 2024</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+        
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+
+
+
+
+
+
+    <script src=" {{asset('../vendor/global/global.min.js')}}"></script>
+    <script src="{{asset('./js/quixnav-init.js')}}"></script>
+    <script src="{{asset('./js/custom.min.js')}}"></script>
+    
+
+
+
+    <!-- Jquery Validation -->
+    <script src="{{asset('./vendor/jquery-validation/jquery.validate.min.js')}}"></script>
+    <!-- Form validate init -->
+    <script src="{{asset('./js/plugins-init/jquery.validate-init.js')}}"></script>
+    
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+{% endblock %}

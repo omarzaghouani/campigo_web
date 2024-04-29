@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+{% block body %}
+    <h1>Search Results for "{{ app.request.query.get('num_v') }}"</h1>
+
+    {% if vehicules is not empty %}
+        <ul>
+            {% for vehicule in vehicules %}
+                <li>{{ vehicule.numV }}</li> <!-- Updated to only display numV -->
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+{% endblock %}

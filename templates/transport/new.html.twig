@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+<title>transport new</title>
+{% endblock %}
+
+{% block body %}
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+      <style>
+    /* Change color of specific element by class */
+    .welcome-line-1 {
+        color: black; /* Change color to black */
+    }
+</style>
+                <!-- row -->
+          
+                    <div class="container">
+                        <div clas  <div class="form-card1">
+                        <div class="form-card2">
+                        <div class="card">
+                            <div class="card-header">
+                            
+                                <h1 class="welcome-line-1" style="color: black;">Create new Transport</h1>
+                            </div>
+              
+            {{ include('transport/_form.html.twig') }}
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+              <p>Copyright © Designed &amp; Developed by omar zaghouani <a href="" target="_blank">zo.livezaghouani</a> 2024</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+        
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+
+
+
+
+
+
+    <script src=" {{asset('../vendor/global/global.min.js')}}"></script>
+    <script src="{{asset('./js/quixnav-init.js')}}"></script>
+    <script src="{{asset('./js/custom.min.js')}}"></script>
+    
+
+
+
+    <!-- Jquery Validation -->
+    <script src="{{asset('./vendor/jquery-validation/jquery.validate.min.js')}}"></script>
+    <!-- Form validate init -->
+    <script src="{{asset('./js/plugins-init/jquery.validate-init.js')}}"></script>
+    
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+{% endblock %}

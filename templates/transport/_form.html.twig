@@ -1,0 +1,6 @@
+{{ form_start(form ,{'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_widget(form) }}
+  <button class="submit-button">{{ button_label|default('Save') }}</button>
+  <a href="{{ path('app_transport_index') }}"class="submit-button">back to list</a>
+   
+{{ form_end(form) }}

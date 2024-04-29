@@ -1,0 +1,69 @@
+{% extends 'basefront.html.twig' %}
+
+{% block body %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Liste des transports</title>
+        <style>
+            /* Define styles for the title */
+            .title {
+                color: #325B69; /* Text color */
+            }
+
+            /* Define a class for the transport list */
+            .transport-list {
+                list-style-type: none; /* Remove bullet points */
+                padding: 0;
+            }
+
+            /* Define styles for each transport item */
+            .transport-item {
+                border: 1px solid #325B69; /* Border color */
+                border-radius: 5px;
+                padding: 10px;
+                margin-bottom: 10px;
+                background-color: #f9f9f9; /* Background color */
+                color: #325B69; /* Text color */
+            }
+
+            /* Define styles for sorting buttons */
+            .sorting-button {
+                background-color: #4CAF50; /* Green background */
+                color: white; /* White text */
+                padding: 10px 20px; /* Padding */
+                border: none; /* Remove border */
+                border-radius: 5px; /* Rounded corners */
+                cursor: pointer; /* Cursor style */
+                margin-right: 10px; /* Right margin */
+            }
+
+            /* Hover effect for sorting buttons */
+            .sorting-button:hover {
+                background-color: #45a049; /* Darker green */
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Apply the title class to the heading -->
+        <h1 class="title">Liste des transports</h1>
+        
+        <ul class="transport-list">
+            {% for transport in transports %}
+                <li class="transport-item">
+                    <h3>Transport {{ transport.getNumT() }}</h3>
+                    <p>Date de départ: {{ transport.getDd() | date('Y-m-d') }}</p>
+                    <p>Date d'arrivée: {{ transport.getDa() | date('Y-m-d') }}</p>
+                    <p>Coût: {{ transport.getCout() }}</p>
+                    <!-- Add more details as needed -->
+                </li>
+            {% endfor %}
+        </ul>
+        <form method="get" action="{{ path('app_transport_front') }}">
+            <!-- Add CSS classes to the sorting buttons -->
+            <button class="sorting-button" type="submit" name="sort_order" value="asc">Tri ascendant par coût</button>
+            <button class="sorting-button" type="submit" name="sort_order" value="desc">Tri descendant par coût</button>
+        </form>
+    </body>
+    </html>
+{% endblock %}

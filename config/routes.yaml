@@ -1,0 +1,33 @@
+app_vehicule_search:
+    path: /vehicule/search
+    controller: App\Controller\VehiculeController::search
+    methods: ['GET']
+app_vehicule_index:
+    path: /vehicule/
+    controller: 'App\Controller\VehiculeController::index'
+    methods: ['GET']
+
+app_vehicule_new:
+    path: /vehicule/new
+    controller: 'App\Controller\VehiculeController::new'
+    methods: ['GET', 'POST']
+
+app_vehicule_edit:
+    path: /vehicule/{num_v}/edit
+    controller: 'App\Controller\VehiculeController::edit'
+    methods: ['GET', 'POST']
+
+app_vehicule_show:
+    path: /vehicule/{num_v}
+    controller: 'App\Controller\VehiculeController::show'
+    methods: ['GET']
+
+app_vehicule_delete:
+    path: /vehicule/{num_v}
+    controller: 'App\Controller\VehiculeController::delete'
+    methods: ['POST']
+    
+app_calendar:
+    path: /calendar
+    controller: App\Controller\CalendarController::index
+   

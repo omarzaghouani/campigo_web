@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques{% endblock %}
+
+{% block body %}
+    <div style="text-align: center;">
+        <h1>Statistiques des transports</h1>
+        <div style="position: relative;">
+       <canvas id="chart" width="50" height="50"></canvas>
+
+            <h1 style="position: absolute; top: 50%; left: calc(70% + 55px); transform: translate(-60%, -60%); color: #325B69;">Transport Statistiques</h1>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var data = {{ stats|json_encode|raw }};
+        var labels = [];
+        var values = [];
+
+        data.forEach(function(item) {
+            labels.push(item.type);
+            values.push(item.count);
+        });
+
+        var total = values.reduce(function(a, b) {
+            return a + b;
+        });
+
+        var percentages = values.map(function(value) {
+            return (value / total) * 100;
+        });
+
+        var chart = new Chart('chart', {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Nombre de sinistres par type',
+                    data: percentages,
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                aspectRatio: 1, // 1:1 aspect ratio for a circle
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                var label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                var value = context.formattedValue || '';
+                                if (value) {
+                                    label += value + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+{% endblock %}

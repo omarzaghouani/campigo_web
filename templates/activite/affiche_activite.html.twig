@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Activite</title>{% endblock %}
+
+{% block body %}
+    <div class="table_centre-container">
+        <table class="centre-table">
+            <thead>
+                <tr>
+                    <th>Id </th>
+                    <th>Nom </th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Centre</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for activite in a %}
+                    <tr>
+                        <td>{{ activite.id_activite }}</td>
+                        <td>{{ activite.getNomActivite() }}</td>
+                        <td>{{ activite.getDescription() }}</td>
+                        <td>{{ activite.getType() }}</td>
+                        <td>{{ activite.Centre }}</td>
+                        <td>
+                            <a href="{{ path('app_act_supprimer', {'id_activite': activite.getId_activite()}) }}" class="btn ">Supprimer</a>
+                            <a href="{{ path('app_modifier_act', {'Nom_activite': activite.getNomActivite()}) }}" class="btn">Modifier</a>
+                        </td>
+                    
+                    </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
+         <div>
+                    <a href="{{ path('app_ajouter_act') }}" class="btn btn-large">Ajouter </a>
+
+                    </div>
+    </div>
+  
+{% endblock %}

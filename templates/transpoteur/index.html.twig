@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+<title>Transpoteur index</title>
+{% endblock %}
+
+
+{% block body %}
+                                
+                                         
+    <h1>Transpoteur index</h1>
+<div class="table_centre-container">
+      <div class="sorting-buttons">
+    <button onclick="sortTransporters('asc')" class="btn btn-primary">Sort Ascending</button>
+    <button onclick="sortTransporters('desc')" class="btn btn-primary">Sort Descending</button>
+</div>
+
+         <table class="centre-table" id="transporters-table">
+        <thead>
+            <tr>
+                <th>Num_ch</th> <!-- Changed column header from Id to Num_ch -->
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Numtel</th>
+                <th>Email</th>
+                <th>Daten</th>
+                
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for transpoteur in transpoteurs %}
+            <tr>
+                <td>{{ transpoteur.numCh }}</td> <!-- Changed variable from id to numCh -->
+                <td>{{ transpoteur.nom }}</td>
+                <td>{{ transpoteur.prenom }}</td>
+                <td>{{ transpoteur.numtel }}</td>
+                <td>{{ transpoteur.email }}</td>
+                <td>{{ transpoteur.daten ? transpoteur.daten|date('Y-m-d') : '' }}</td>
+                
+                <td>
+                    <a href="{{ path('app_transpoteur_show', {'num_ch': transpoteur.numCh}) }}"class="btn">show transpoteur</a> <!-- Changed route parameter from id to num_ch -->
+                    <a href="{{ path('app_transpoteur_edit', {'num_ch': transpoteur.numCh}) }}"class="btn">edit transpoteur</a> <!-- Changed route parameter from id to num_ch -->
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td> <!-- Adjusted colspan to match the number of columns -->
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_transpoteur_new') }}"class="btn btn-large">Create new</a>
+
+{% block javascripts %}
+    <script>
+        function sortTransporters(order) {
+            var table = document.getElementById('transporters-table');
+            var rows = table.rows;
+            var transporters = [];
+            
+            // Collect transporter data into array
+            for (var i = 1; i < rows.length; i++) {
+                var cells = rows[i].cells;
+                transporters.push({
+                    numCh: cells[0].innerText,
+                    nom: cells[1].innerText,
+                    prenom: cells[2].innerText,
+                    numtel: cells[3].innerText,
+                    email: cells[4].innerText,
+                    daten: cells[5].innerText
+                });
+            }
+
+            // Sort transporters array based on nom
+            transporters.sort(function(a, b) {
+                if (order === 'asc') {
+                    return a.nom.localeCompare(b.nom);
+                } else {
+                    return b.nom.localeCompare(a.nom);
+                }
+            });
+
+            // Replace table content with sorted transporters
+            for (var i = 0; i < transporters.length; i++) {
+                var row = rows[i + 1];
+                var cells = row.cells;
+                cells[0].innerText = transporters[i].numCh;
+                cells[1].innerText = transporters[i].nom;
+                cells[2].innerText = transporters[i].prenom;
+                cells[3].innerText = transporters[i].numtel;
+                cells[4].innerText = transporters[i].email;
+                cells[5].innerText = transporters[i].daten;
+            }
+        }
+    </script>
+{% endblock %}
+
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+              <p>Copyright © Designed &amp; Developed by omar zaghouani <a href="" target="_blank">zo.livezaghouani</a> 2024</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+        
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+
+
+
+
+
+
+    <script src=" {{asset('../vendor/global/global.min.js')}}"></script>
+    <script src="{{asset('./js/quixnav-init.js')}}"></script>
+    <script src="{{asset('./js/custom.min.js')}}"></script>
+    
+
+
+
+    <!-- Jquery Validation -->
+    <script src="{{asset('./vendor/jquery-validation/jquery.validate.min.js')}}"></script>
+    <!-- Form validate init -->
+    <script src="{{asset('./js/plugins-init/jquery.validate-init.js')}}"></script>
+    
+   
+    
+{% endblock %}

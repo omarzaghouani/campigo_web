@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Histogram of Vehicles with Highest Prices{% endblock %}
+
+{% block body %}
+    <h1>Histogram of Vehicles with Highest Prices</h1>
+
+    <canvas id="numVHistogram" width="400" height="400"></canvas>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctx = document.getElementById('numVHistogram').getContext('2d');
+            var numVHistogram = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [{% for vehicle in highestPricedVehicles %}"{{ vehicle.numV }}",{% endfor %}],
+                    datasets: [{
+                        label: 'Highest Price',
+                        data: [{% for vehicle in highestPricedVehicles %}{{ vehicle.prixuni_max }},{% endfor %}],
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}

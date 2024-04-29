@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transport Details - {{ transport.numT }}</title>
+    <style>
+        /* Define styles for table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color: #325B69; /* Change text color to #325B69 */
+        }
+        /* Define alternating row colors */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        /* Center the content */
+        .container {
+            max-width: 600px; /* Adjust as needed */
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+         
+        <h1 style="color: #325B69;">Transport Details</h1>
+        <table>
+            <tr>
+                <th>Attribute</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td><strong>Num_t</strong></td>
+                <td>{{ transport.numT }}</td>
+            </tr>
+            <tr>
+                <td><strong>Transpoteur</strong></td>
+                <td>{{ transport.transpoteur }}</td>
+            </tr>
+            <tr>
+                <td><strong>Vehicule</strong></td>
+                <td>{{ transport.vehicule }}</td>
+            </tr>
+            <tr>
+                <td><strong>Dd</strong></td>
+                <td>{{ transport.dd|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <td><strong>Da</strong></td>
+                <td>{{ transport.da|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <td><strong>Cout</strong></td>
+                <td>{{ transport.cout }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="entretien-container">
+        {% for chunk in u|batch(3) %}
+            <div class="row justify-content-center">
+                {% for utilisateur in chunk %}
+                    <div class="col-md-4">
+                        <div class="entretien-card">
+                            <img src="{{ asset('uploads/' ~ utilisateur.getPhotoD) }}" alt="Photo de l'entretien" class="" width="200" height="300">
+                            <div class="entretien-info">
+                                <strong>Nom:</strong> {{ utilisateur.Nom }}<br>
+                                <strong>Prenom:</strong> {{ utilisateur.Prenom }}<br>
+                                <strong>Num tel:</strong> {{ utilisateur.numerodetelephone }}<br>
+                                <strong>Email:</strong> {{ utilisateur.email }}<br>
+                                <strong>Role:</strong> {{ utilisateur.role }}<br>
+                                <strong>Actif:</strong> {{ utilisateur.actif }}<br>
+                            </div>
+                            <div class="">
+                                <a href="{{ path('user_show', {'id': utilisateur.id}) }}" class="btn btn-primary">Voir</a>
+                                <a href="{{ path('modifier', {'id': utilisateur.id}) }}" class="btn btn-secondary">Éditer</a>
+                                <a href="{{ path('signin') }}" class="btn btn-secondary">Ajouter</a>
+                                <form method="post" action="{{ path('delete', {'id': utilisateur.id}) }}" class="d-inline">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">Supprimer</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

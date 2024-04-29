@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ utilisateur.nom }} {{ utilisateur.prenom }}</h5>
+        <p class="card-text">Numéro de Téléphone : {{ utilisateur.numerodetelephone }}</p>
+        <p class="card-text">Email : {{ utilisateur.email }}</p>
+        <p class="card-text">Rôle : {{ utilisateur.role }}</p>
+        <img src="{{ utilisateur.photo_d }}" alt="Photo de profil" class="card-img-top">
+        <p class="card-text">{{ utilisateur.actif ? 'Actif' : 'Inactif' }}</p>
+        <a href="{{ path('modifier', {'id': utilisateur.id}) }}" class="btn btn-secondary">Éditer</a>
+        <a href="{{ path('delete', {'id': utilisateur.id}) }}" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">Supprimer</a>
+        <a href="{{ path('user_index') }}" class="btn btn-primary">Retour</a>
+    </div>
+</div>

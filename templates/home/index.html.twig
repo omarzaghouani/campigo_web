@@ -1,0 +1,34 @@
+{% extends 'home/base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/home_styles.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="background-image">
+        <div class="container">
+            <header>
+                <h1>Bienvenue sur notre site</h1>
+            </header>
+            <main>
+                <section>
+                    <h2>Informations</h2>
+                    <p>Cette page d'accueil est destinée à fournir des informations de base sur votre site.</p>
+                </section>
+                <section>
+                    <h2>Actions</h2>
+                    <!-- Utilisation de <div> ou <nav> au lieu de <ul> sans <li> est plus sémantiquement correct pour les boutons d'action -->
+                    <div class="actions">
+                        <a href="{{ path('signin') }}" class="btn btn-primary mr-2">Créer un compte</a>
+                        <a href="{{ path('login') }}" class="btn btn-primary">Se connecter</a>
+                    </div>
+                </section>
+            </main>
+            <footer>
+                <p>&copy; {{ 'now'|date('Y') }} Mon Site Web</p>
+            </footer>
+        </div>
+    </div>
+{% endblock %}

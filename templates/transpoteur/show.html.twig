@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+<title>Transpoteur show</title>
+{% endblock %}
+
+{% block body %}
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+       
+                <!-- row -->
+                
+                  <div class="container">
+                        <div clas  <div class="form-card1">
+                        <div class="form-card2">
+                        <div class="card">
+                         <div class="card-header">
+                            <h1 class="welcome-line-1">Transpoteur</h1>
+                            </div>
+
+
+                            <h1></h1>
+                             <h1></h1>
+
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Num_ch</th> <!-- Changed column header from Id to Num_ch -->
+                <td>{{ transpoteur.numCh }}</td> <!-- Changed variable from id to numCh -->
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ transpoteur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ transpoteur.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Numtel</th>
+                <td>{{ transpoteur.numtel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ transpoteur.email }}</td>
+            </tr>
+            <tr>
+                <th>Daten</th>
+                <td>{{ transpoteur.daten ? transpoteur.daten|date('Y-m-d') : '' }}</td>
+            </tr>
+          
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_transpoteur_index') }}"class="submit-button">back to list</a>
+    {{ include('transpoteur/_delete_form.html.twig') }}
+     <a href="{{ path('app_transpoteur_edit', {'num_ch': transpoteur.numCh}) }}"class="submit-button">edit</a> <!-- Changed route parameter from id to num_ch -->
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+              <p>Copyright © Designed &amp; Developed by omar zaghouani <a href="" target="_blank">zo.livezaghouani</a> 2024</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+        
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+
+
+
+
+
+
+    <script src=" {{asset('../vendor/global/global.min.js')}}"></script>
+    <script src="{{asset('./js/quixnav-init.js')}}"></script>
+    <script src="{{asset('./js/custom.min.js')}}"></script>
+    
+
+
+
+    <!-- Jquery Validation -->
+    <script src="{{asset('./vendor/jquery-validation/jquery.validate.min.js')}}"></script>
+    <!-- Form validate init -->
+    <script src="{{asset('./js/plugins-init/jquery.validate-init.js')}}"></script>
+    
+
+
+{% endblock %}

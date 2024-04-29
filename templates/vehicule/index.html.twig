@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+<title>Vehicule index</title>
+{% endblock %}
+
+{% block body %}
+
+<h1>Vehicule index</h1>
+    
+<div class="table_centre-container">
+    <table class="centre-table">
+        <form action="{{ path('app_vehicule_search') }}" method="GET">
+            <input type="text" id="num_v" name="num_v" placeholder="Enter Num_v">
+            <button type="submit" class="search-button">Search</button>
+        </form>
+        <thead>
+            <tr>
+                <th>Num_v</th> <!-- Changed from 'Id' to 'Num_v' -->
+                <th>Type</th>
+                <th>Capacite</th>
+                <th>Prixuni</th>
+                <th>Transpoteur</th>
+                <th>Photo</th> <!-- New column for displaying photos -->
+                <th>Actions</th> <!-- Renamed 'actions' to 'Actions' -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for vehicule in vehicules %}
+            <tr>
+                <td>{{ vehicule.numV }}</td> <!-- Changed from 'id' to 'numV' -->
+                <td>{{ vehicule.type }}</td>
+                <td>{{ vehicule.capacite }}</td>
+                <td>{{ vehicule.prixuni }}</td>
+                <td>{{ vehicule.Transpoteur }}</td>
+                <td>
+                    {% if vehicule.photo %}
+                    <img src="{{ asset('uploads/' ~ vehicule.photo) }}" alt="Photo" style="max-width: 100px; max-height: 100px;">
+                    {% else %}
+                    No photo available
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ path('app_vehicule_show', {'num_v': vehicule.numV}) }}" class="btn">Show</a>
+                    <!-- Changed from 'show vehicule' to 'Show' -->
+                    <a href="{{ path('app_vehicule_edit', {'num_v': vehicule.numV}) }}" class="btn">Edit</a>
+                    <!-- Changed from 'edit vehicule' to 'Edit' -->
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="7">No records found</td> <!-- Updated colspan to match the number of columns -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_vehicule_new') }}" class="btn btn-large">Create new</a>
+   <a href="{{ path('services_plus_achetes') }}" class="btn btn-primary btn-sm">Stat</a>
+
+
+
+</div>
+
+<div class="footer">
+    <div class="copyright">
+        <p>Copyright © Designed &amp; Developed by omar zaghouani <a href="" target="_blank">zo.livezaghouani</a> 2024</p>
+    </div>
+</div>
+
+<script src="{{asset('../vendor/global/global.min.js')}}"></script>
+<script src="{{asset('./js/quixnav-init.js')}}"></script>
+<script src="{{asset('./js/custom.min.js')}}"></script>
+
+<!-- Jquery Validation -->
+<script src="{{asset('./vendor/jquery-validation/jquery.validate.min.js')}}"></script>
+<!-- Form validate init -->
+<script src="{{asset('./js/plugins-init/jquery.validate-init.js')}}"></script>
+
+<style>
+    .search-button {
+        background-color: #325B69;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+</style>
+
+</body>
+</html>
+
+{% endblock %}

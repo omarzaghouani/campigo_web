@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title> Centre</title>{% endblock %}
+
+{% block body %}
+    <div class="table_centre-container">
+        <table class="centre-table">
+            <thead>
+                <tr>
+                    <th>Id </th>
+                    <th>Nom </th>
+                    <th>Ville</th>
+                    <th>Mail</th>
+                    <th>Numéro</th>
+                    <th>Nbre activités</th>
+                    <th>Photo</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for centre in c %}
+                    <tr>
+                        <td>{{ centre.getId_centre() }}</td>
+                        <td>{{ centre.getNomCentre() }}</td>
+                        <td>{{ centre.getVille() }}</td>
+                        <td>{{ centre.getMail() }}</td>
+                        <td>{{ centre.getNumTel() }}</td>
+                        <td>{{ centre.getNbreActivite() }}</td>
+                        <td>
+                            <img src="{{ asset('uploads/' ~ centre.getPhoto()) }}" alt="Photo du centre" class="centre-photo" width="100" height="100">
+                        </td>
+                        <td>
+                            <a href="{{ path('app_centre_supprimer', {'id_centre': centre.getId_centre()}) }}" class="btn ">Supprimer</a>
+                            <a href="{{ path('app_modifier', {'nom_centre': centre.getNomCentre()}) }}" class="btn">Modifier</a>
+                        </td>
+                    
+                    </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
+         <div>
+                    <a href="{{ path('app_ajouter') }}" class="btn btn-large">Ajouter </a>
+
+                    </div>
+    </div>
+  
+{% endblock %}

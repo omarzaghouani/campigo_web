@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Create New Activite</title>{% endblock %}
+
+
+
+{% block body %}
+    <div class="container">
+    <div class="form-card1">
+  <div class="form-card2">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="welcome-line-1">Centre</h1>
+            </div>
+            <div class="card-body">
+                {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+
+                {{ form_row(form.nom_activite, {
+                    'attr': {
+                        'class': 'form-control',
+                        
+                    }
+                }) }}
+
+                {{ form_row(form.description, {
+                    'attr': {
+                        'class': 'form-control',
+                        
+                    }
+                }) }}
+
+                {{ form_row(form.type, {
+                    'attr': {
+                        'class': 'form-control',
+                        
+                    }
+                }) }}
+
+                {{ form_row(form.centre, {
+                    'attr': {
+                        'class': 'form-control',
+                        
+                    }
+                }) }}
+                 
+                
+                <button type="submit" class="submit-button">Create</button>
+                <a href="{{ path('app_afficher_act')}}" class="submit-button">Annuler</a>
+
+                {{ form_end(form) }}
+                
+                
+            </div>
+        </div>
+    </div>
+     </div>
+    </div>
+
+  
+{% endblock %}

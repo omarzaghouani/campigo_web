@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Create New Centre</title>{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+    <div class="form-card1">
+  <div class="form-card2">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="welcome-line-1">Centre</h1>
+            </div>
+            <div class="card-body">
+                {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+
+                {{ form_row(form.nom_centre, {
+                    'attr': {
+                        'class': 'form-control',
+                        
+                    }
+                }) }}
+
+                {{ form_row(form.ville, {
+                    'attr': {
+                        'class': 'form-control',
+                        
+                    }
+                }) }}
+
+                {{ form_row(form.mail, {
+                    'attr': {
+                        'class': 'form-control',
+                        
+                    }
+                }) }}
+
+                {{ form_row(form.num_tel, {
+                    'attr': {
+                        'class': 'form-control',
+                        
+                    }
+                }) }}
+                 
+                  {{ form_row(form.nbre_activite, {
+                    'attr': {
+                        'class': 'form-control',
+                    }
+                }) }}
+
+                {{ form_row(form.photo, {
+                    'attr': {
+                        'class': 'form-control',
+                    }
+                }) }}
+
+                <button type="submit" class="submit-button">Create</button>
+                <a href="{{ path('app_afficher')}}" class="submit-button">Annuler</a>
+
+                {{ form_end(form) }}
+                
+                
+            </div>
+        </div>
+    </div>
+     </div>
+    </div>
+
+  
+{% endblock %}

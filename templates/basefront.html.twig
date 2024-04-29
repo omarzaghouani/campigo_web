@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!--=============== FAVICON ===============-->
+      <link rel="shortcut icon" href="{{ asset('./images/logoCampigo.png')}}" type="image/x-icon">
+
+      <!--=============== REMIXICONS ===============-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css" crossorigin="">
+      
+      <!--=============== CSS ===============-->
+      <link rel="stylesheet" href="{{asset('assets/css_front/styles.css')}}">
+
+      <title>Responsive camping website - Bedimcode</title>
+   </head>
+
+
+
+   
+   <body>
+      <!--==================== HEADER ====================-->
+      <header class="header" id="header">
+         <nav class="nav container">
+            <a href="#" class="nav__logo">
+               <img src="{{ asset('./images/logoCampigo.png')}}" alt="logo">
+            </a> 
+            <div class="nav__menu" id="nav-menu">
+               <ul class="nav__list">
+               <li class="nav__item">
+               <a href="#" class="nav__link">Home</a>
+               </li>
+               <li class="nav__item">
+               <a href="#" class="nav__link">Reservation</a>
+                </li>
+               
+               <div class="nav__buttons">
+                  <a href="{{ path('app_transport_front') }}" class="nav__button-link">transport</a>
+            
+                  </div>
+               </li>
+               
+               <li class="nav__item">
+               <a href="#" class="nav__link">Equipements</a>
+               </li>
+               <li class="nav__item"> 
+               <a href="#" class="nav__link">Contact</a>
+               </li>
+               </ul>
+
+               <div class="nav__buttons">
+                  <a href="{{ path('login') }}" class="nav__button-link">Login</a>
+                  <a href="{{ path('app_centre_back') }}" class="nav__button-ghost">Get Started</a>
+                  </div>
+               </div>
+         </nav>
+         
+      </header>
+
+{% block body %}
+      <!--==================== MAIN ====================-->
+      <main class="main">
+         <!-- HOME=-->
+         <section class="home">
+         <div class="home__container container">
+         <div class="home__content">
+         <div class="home__data">
+         <h3 class="home__subtitle">
+         </h3>
+
+         <h1 class="home__title">
+            Camping Events <br>
+            To Remember
+         </h1>
+         <p class="home__description">
+            Camp anywhere anytime without hassle and enjoy.
+            </p>
+            <a href="#" class="home__button">
+            Explore Locations
+            </a>
+         </div> 
+         
+         </div>
+
+           <div class="home__images">
+            <img src="{{asset('assets/img/img-4.svg')}} " alt="" class="home__img-4">
+            <img src="{{asset ('assets/img/img-3.svg')}} " alt="" class="home__img-3">
+            <img src="{{asset ('assets/img/img-2.svg')}} " alt="" class="home__img-2">
+            <img src="{{asset('assets/img/img-1.svg')}} " alt="" class="home__img-1">
+
+
+           </div>
+         
+         </div>
+         </section>
+         </main>
+      
+      <!--=============== GSAP ===============-->
+      <script src="{{asset ('assets/js_front/gsap.min.js')}}"></script>
+
+      <!--=============== MAIN JS ===============-->
+      <script src="{{asset ('assets/js_front/main.js')}}"></script>
+   </body>
+</html>
+{% endblock %}
